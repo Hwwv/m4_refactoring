@@ -20,3 +20,11 @@ d85a4e0 Task 2.1
 81ab2f5 Task 1.2
 696065a Task 1.1
 4ceae65 Initial commit
+96f3f93 (HEAD -> main) Task 2.3
+b94095d (origin/main, origin/HEAD) Task 1.1 finish the style problem
+e520afa Task 2.2 log.txt update
+a4c9d2b Task 2.2
+d85a4e0 Task 2.1
+81ab2f5 Task 1.2
+696065a Task 1.1
+4ceae65 Initial commit

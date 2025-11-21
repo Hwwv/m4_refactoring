@@ -22,34 +22,42 @@ public class StatementPrinter {
      * @throws RuntimeException if one of the play types is not known
      */
     public String statement() {
-        int totalAmount = 0;
-        int volumeCredits = 0;
+
         final StringBuilder result = new StringBuilder(
                 "Statement for " + invoice.getCustomer() + System.lineSeparator()
         );
-
         for (Performance performance : invoice.getPerformances()) {
-
-            int rslt = 0;
-            rslt = getAmount(performance, getPlay(performance));
-
-            volumeCredits += getVolumeCredits(performance);
-
-            // print line for this order
             result.append(
                     String.format("  %s: %s (%s seats)%n",
                             getPlay(performance).getName(),
-                            usd(rslt),
-                            performance.getAudience())
+                            usd(getAmount(performance, getPlay(performance))),
+                            performance.getAudience()
+                    )
             );
-            totalAmount += rslt;
         }
+
         result.append(String.format(
                 "Amount owed is %s%n",
-                usd(totalAmount))
+                usd(getTotalAmount()))
         );
-        result.append(String.format("You earned %s credits%n", volumeCredits));
+        result.append(String.format("You earned %s credits%n", getTotalVolumeCredits()));
         return result.toString();
+    }
+
+    private int getTotalAmount() {
+        int totalAmount = 0;
+        for (Performance performance : invoice.getPerformances()) {
+            totalAmount += getAmount(performance, getPlay(performance));
+        }
+        return totalAmount;
+    }
+
+    private int getTotalVolumeCredits() {
+        int volumeCredits = 0;
+        for (Performance performance : invoice.getPerformances()) {
+            volumeCredits += getVolumeCredits(performance);
+        }
+        return volumeCredits;
     }
 
     private static String usd(int totalAmount) {
