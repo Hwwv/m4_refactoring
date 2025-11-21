@@ -1,2 +1,5 @@
 696065a (HEAD -> main) Task 1.1
 4ceae65 (origin/main, origin/HEAD) Initial commit
+81ab2f5 (HEAD -> main, origin/main, origin/HEAD) Task 1.2
+696065a Task 1.1
+4ceae65 Initial commit
